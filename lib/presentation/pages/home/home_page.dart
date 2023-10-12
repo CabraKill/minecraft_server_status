@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minecraft_server_status/data/service/server_status_service.dart';
+import 'package:minecraft_server_status/data/usecase/server_status_service.dart';
 import 'package:minecraft_server_status/domain/model/server_status_model.dart';
 import 'package:minecraft_server_status/infra/constants/image_constants.dart';
 import 'package:minecraft_server_status/presentation/designSytem/button/mc_button.dart';
