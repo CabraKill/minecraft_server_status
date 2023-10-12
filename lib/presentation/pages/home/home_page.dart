@@ -47,7 +47,9 @@ class _HomePageState extends State<HomePage> {
                   future: _serverStatusFuture,
                   builder: (contex, snap) {
                     final server = snap.data;
-                    if (snap.hasData && server != null) {
+                    if (snap.connectionState == ConnectionState.done &&
+                        snap.hasData &&
+                        server != null) {
                       return ListView.builder(
                         itemCount: 1,
                         itemBuilder: (context, index) {
@@ -100,9 +102,18 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
-              child: Row(
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 16.0,
                 children: [
                   McButton(text: "Refresh", onPressed: _refresh),
+                  McButton(text: "Add Server", onPressed: () {}),
+                  const McButton(
+                    text: "Delete",
+                  ),
+                  const McButton(
+                    text: "Edit",
+                  ),
                 ],
               ),
             )
@@ -123,6 +134,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<ServerStatusModel> _getServerStatus() {
-    return const ServerStatusService().connect(ip: "");
+    return const ServerStatusService().connect(ip: "24.144.82.12");
   }
 }
